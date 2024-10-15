@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: larger;
+            font-weight: bolder;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercise 1:[1, 2, 3, 4, 5, 6]</h1>
+    <h1>Exercise 2:[3, 1, 4, 1, 5, 9]</h1>
+    <h1>Exercise 3:"hello"</h1>
+    <h1>Exercise 4:[1, 2, 2, 3, 4, 4, 5]</h1>
+    <button onclick="showResult(1)"> Exercise 1: Filtering an Array </button>
+    <button onclick="showResult(2)">Exercise: 2 Find the Largest Number</button>
+    <button onclick="showResult(3)">Exercise: 3 Reverse a String </button>
+    <button onclick="showResult(4)">Exercise: 4 Remove Duplicates</button>
+
+    <div id="result1" class="result"></div>
+    <div id="result2" class="result"></div>
+    <div id="result3" class="result"></div>
+    <div id="result4" class="result"></div>
+
+    <script>
+     
+        function filterEvenNumbers(numbers) {
+            const evenNumbers = [];
+            for (const number of numbers) {
+                if (number % 2 === 0) {
+                    evenNumbers.push(number);
+                }
+            }
+            return evenNumbers;
+        }
+
+        function findLargestNumber(numbers) {
+            if (numbers.length === 0) {
+                return null; 
+            }
+            return Math.max(...numbers);
+        }
+
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+
+        function removeDuplicates(numbers) {
+            return Array.from(new Set(numbers));
+        }
+
+        function showResult(taskNumber) {
+        
+            const results = document.querySelectorAll('.result');
+            results.forEach(result => result.style.display = 'none');
+
+          
+            let result;
+            switch(taskNumber) {
+                case 1:
+                    result = filterEvenNumbers([1, 2, 3, 4, 5, 6]);
+                    document.getElementById('result1').innerText = `The Result: ${result}`;
+                    break;
+                case 2:
+                    result = findLargestNumber([3, 1, 4, 1, 5, 9]);
+                    document.getElementById('result2').innerText = `The Result: ${result}`;
+                    break;
+                case 3:
+                    result = reverseString("hello");
+                    document.getElementById('result3').innerText = `The Result: ${result}`;
+                    break;
+                case 4:
+                    result = removeDuplicates([1, 2, 2, 3, 4, 4, 5]);
+                    document.getElementById('result4').innerText = `The Result: ${result}`;
+                    break;
+            }
+            document.getElementById(`result${taskNumber}`).style.display = 'block';
+        }
+    </script>
+    
+</body>
+</html>
